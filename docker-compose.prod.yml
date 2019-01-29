@@ -1,0 +1,24 @@
+version: "3"
+services:
+  database:
+    image: postgres
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}-prod
+  backend: 
+    build: .
+    ports: 
+      - 80:3000
+    restart: always
+    command: bash -c 'while !</dev/tcp/database/5432; do sleep 10; done; npm start'
+    depends_on:
+      - database
+    environment:
+      DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@database/${DB_NAME}-prod
+      NODE_ENV: prod
+      PORT: 3000
+volumes:
+  database:

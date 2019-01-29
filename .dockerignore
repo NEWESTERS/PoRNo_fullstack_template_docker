@@ -1,0 +1,5 @@
+frontend/.git
+frontend/node_modules
+
+backend/.git
+backend/node_modules
