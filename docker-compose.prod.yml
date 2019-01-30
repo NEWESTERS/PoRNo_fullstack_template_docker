@@ -3,7 +3,7 @@ services:
   database:
     image: postgres
     volumes:
-      - database:/var/lib/postgresql/data
+      - database_prod:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -21,4 +21,4 @@ services:
       NODE_ENV: prod
       PORT: 3000
 volumes:
-  database:
+  database_prod:

@@ -5,7 +5,7 @@ const express = require('express'),
 
 const server = express();
 const PORT = process.env.PORT;
-const CLIENT_BUILD_PATH = path.join(__dirname, '../frontend/build');
+const CLIENT_BUILD_PATH = path.join(__dirname, '../../frontend/build');
 
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL

@@ -3,7 +3,7 @@ services:
   database:
     image: postgres
     volumes:
-      - database:/var/lib/postgresql/data
+      - database_dev:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
@@ -31,4 +31,4 @@ services:
     depends_on:
       - backend
 volumes:
-  database:
+  database_dev:
