@@ -20,5 +20,6 @@ services:
       DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@database/${DB_NAME}-prod
       NODE_ENV: prod
       PORT: 3000
+      SECRET: ${SECRET}
 volumes:
   database_prod:

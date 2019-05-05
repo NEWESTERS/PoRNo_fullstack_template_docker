@@ -14,20 +14,21 @@ services:
       - 80:3000
     command: bash -c 'while !</dev/tcp/database/5432; do sleep 10; done; npm start'
     volumes:
-      - ./backend:/usr/app
+      - ./backend/src:/usr/app/src
     depends_on:
       - database
     environment:
       DATABASE_URL: postgres://${DB_USER}:${DB_PASSWORD}@database/${DB_NAME}-dev
       NODE_ENV: dev
       PORT: 3000
+      SECRET: ${SECRET}
   frontend:
     build: ./frontend/
     ports:
       - 3000:3000
     command: npm start
     volumes:
-      - ./frontend:/usr/app
+      - ./frontend/src:/usr/app/src
     depends_on:
       - backend
 volumes:
